@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You</title>
+  <style>
+    :root {
+      --primary-color: #0072ff;
+      --primary-color-dark: #4BB543;
+      --card-bg: #ffffff;
+      --text-color: #333;
+      --button-color: #0072ff;
+      --button-hover: #0053ba;
+      --background: linear-gradient(135deg, #00c6ff, #0072ff);
+    }
+    [data-theme="dark"] {
+      --primary-color: #4BB543;
+      --primary-color-dark: #ffffff;
+      --card-bg: #222;
+      --text-color: #f1f1f1;
+      --button-color: #4BB543;
+      --button-hover: #388e3c;
+      --background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      background: var(--background);
+      font-family: "Helvetica Neue", sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      color: var(--text-color);
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+    .thankyou-card {
+      background: var(--card-bg);
+      color: var(--text-color);
+      border-radius: 16px;
+      padding: 50px 40px;
+      max-width: 450px;
+      text-align: center;
+      box-shadow: 0 15px 35px rgba(0,0,0,0.3);
+      position: relative;
+      animation: fadeInUp 1s ease forwards;
+      transition: background 0.5s ease, color 0.5s ease;
+    }
+    .checkmark {
+      font-size: 80px;
+      color: var(--primary-color-dark);
+      margin-bottom: 20px;
+      animation: bounce 1s infinite alternate;
+    }
+    .thankyou-card h1 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      color: var(--primary-color);
+    }
+    .thankyou-card p {
+      font-size: 1.1rem;
+      margin-bottom: 30px;
+    }
+    .thankyou-card a {
+      display: inline-block;
+      text-decoration: none;
+      background-color: var(--button-color);
+      color: #fff;
+      padding: 14px 30px;
+      border-radius: 8px;
+      transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+    .thankyou-card a:hover {
+      background-color: var(--button-hover);
+      transform: scale(1.05);
+    }
+    .theme-toggle {
+      position: absolute;
+      top: 15px;
+      right: 15px;
+      background: var(--button-color);
+      color: #fff;
+      border: none;
+      padding: 8px 14px;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+    .theme-toggle:hover {
+      background: var(--button-hover);
+    }
+
+    @keyframes bounce {
+      0% { transform: translateY(0); }
+      100% { transform: translateY(-10px); }
+    }
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(40px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    @media (max-width: 500px) {
+      .thankyou-card {
+        padding: 30px 20px;
+      }
+      .thankyou-card h1 {
+        font-size: 2rem;
+      }
+    }
+  </style>
+</head>
+<body data-theme="light">
+  <div class="thankyou-card">
+    <button class="theme-toggle" onclick="toggleTheme()">Toggle Theme</button>
+    <div class="checkmark">&#10004;</div>
+    <h1>Thank You!</h1>
+    <p>We appreciate your submission and will get back to you soon.</p>
+    <a href="/contact">Return Home</a>
+  </div>
+
+  <script>
+    function toggleTheme() {
+      const body = document.body;
+      const currentTheme = body.getAttribute("data-theme");
+      body.setAttribute(
+        "data-theme",
+        currentTheme === "light" ? "dark" : "light"
+      );
+    }
+  </script>
+</body>
+</html>
